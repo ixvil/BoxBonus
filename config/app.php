@@ -180,7 +180,7 @@ return [
 
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
+        Zofe\Rapyd\RapydServiceProvider::class,
     ],
 
     /*
