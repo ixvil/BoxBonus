@@ -21,10 +21,11 @@ if (version_compare(app()->version(), '5.2')>0)
 {
     Route::group(['middleware' => 'web'], function () {
         Route::get('rapyd-ajax/{hash}', array('as' => 'rapyd.remote', 'uses' => '\Zofe\Rapyd\Controllers\AjaxController@getRemote'));
-        //Route::controller('rapyd-demo', '\Zofe\Rapyd\Demo\DemoController');
+//        Route::any('/rapyd-demo', '\Zofe\Rapyd\Demo\DemoController@getIndex');
+
 
     });
 } else {
     Route::get('rapyd-ajax/{hash}', array('as' => 'rapyd.remote', 'uses' => '\Zofe\Rapyd\Controllers\AjaxController@getRemote'));
-    Route::controller('rapyd-demo', '\Zofe\Rapyd\Demo\DemoController');
+//    Route::controller('rapyd-demo', '\Zofe\Rapyd\Demo\DemoController');
 }
