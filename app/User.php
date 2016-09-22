@@ -17,6 +17,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Query\Builder|\App\User whereCustomerId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\User whereUserTypeId($value)
  * @mixin \Eloquent
+ * @property string $name
+ * @method static \Illuminate\Database\Query\Builder|\App\User whereName($value)
  */
 class User extends Authenticatable
 {

@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property CustomerSpent[] $customerSpents
  * @property Gift[] $gifts
  * @property News[] $news
- * @property User[] $users
+ * @property PartnerUser[] $partnerUsers
  * @method static \Illuminate\Database\Query\Builder|\App\Partner whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Partner wherePartnerCategoriesId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Partner whereName($value)
@@ -69,10 +69,10 @@ class Partner extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users()
+    public function partnerUsers()
     {
-        return $this->belongsToMany('App\User', 'partner_users');
+        return $this->hasMany('App\PartnerUser');
     }
 }
