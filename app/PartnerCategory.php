@@ -5,8 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * App\PartnerCategory
+ *
  * @property integer $id
  * @property Partner[] $partners
+ * @method static \Illuminate\Database\Query\Builder|\App\PartnerCategory whereId($value)
+ * @mixin \Eloquent
  */
 class PartnerCategory extends Model
 {

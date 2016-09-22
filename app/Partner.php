@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * App\Partner
+ *
  * @property integer $id
  * @property integer $partner_categories_id
  * @property string $name
@@ -14,6 +16,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property Gift[] $gifts
  * @property News[] $news
  * @property User[] $users
+ * @method static \Illuminate\Database\Query\Builder|\App\Partner whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Partner wherePartnerCategoriesId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Partner whereName($value)
+ * @mixin \Eloquent
  */
 class Partner extends Model
 {

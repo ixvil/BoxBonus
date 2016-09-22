@@ -5,9 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * App\News
+ *
  * @property integer $id
  * @property integer $partners_id
  * @property Partner $partner
+ * @method static \Illuminate\Database\Query\Builder|\App\News whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\News wherePartnersId($value)
+ * @mixin \Eloquent
  */
 class News extends Model
 {
