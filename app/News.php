@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $partners_id
  * @property Partner $partner
  */
-class New extends Model
+class News extends Model
 {
     /**
      * @var array
