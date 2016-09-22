@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * App\CustomerSpent
+ *
  * @property integer $id
  * @property integer $customers_id
  * @property integer $gifts_id
@@ -12,6 +14,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property Customer $customer
  * @property Gift $gift
  * @property Partner $partner
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent whereCustomersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent wherePartnersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent whereGiftsId($value)
+ * @mixin \Eloquent
  */
 class CustomerSpent extends Model
 {

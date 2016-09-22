@@ -5,11 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * App\CustomerArrival
+ *
  * @property integer $id
  * @property integer $customers_id
  * @property integer $partners_id
  * @property Customer $customer
  * @property Partner $partner
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerArrival whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerArrival whereCustomersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\CustomerArrival wherePartnersId($value)
+ * @mixin \Eloquent
  */
 class CustomerArrival extends Model
 {
