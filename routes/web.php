@@ -14,5 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::any('/partners/edit', 'PartnerController@edit');
+Route::any('/partners/edit', 'PartnerController@getEdit');
 Route::any('/partners/grid', 'PartnerController@getGrid');
