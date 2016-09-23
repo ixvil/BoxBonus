@@ -14,12 +14,10 @@ class PartnerController extends Controller implements RapydControllerInterface
      */
     public function getGrid()
     {
-
         $grid = \DataGrid::source(Partner::with('partnerCategory'));
 
         $grid->add('id', 'ID', true)->style("width:100px");
         $grid->add('name', 'Name');
-
         $grid->add('{{ $partnerCategory->name }}', 'Partner Category', 'name');
         $grid->add('location', 'Адрес');
 
@@ -41,25 +39,21 @@ class PartnerController extends Controller implements RapydControllerInterface
         return view('rapyd::demo.grid', compact('grid'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getEdit()
     {
         $edit = DataEdit::source(new Partner);
+
         $edit->add('id', 'ID', 'text')->rule('required');
         $edit->add('name', 'Name', 'text')->rule('required');
         $edit->add('partnerCategory.name', 'Категория', 'autocomplete')->search(['name'])->rule('required');
-
-
         $edit->add('location', 'Адрес', 'text')->rule('required');
         $edit->add('description', 'Описание', 'textarea')->rule('required');
         $edit->add('logo', 'Логотип', 'image')->rule('required');
 
-
-
-
         $edit->link('/partners/grid', "List", "TR");
-
-
-
 
         return view('rapyd::demo.edit', compact('edit'));
     }
