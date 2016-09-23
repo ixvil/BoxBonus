@@ -1,19 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: shipin_a
- * Date: 22.09.2016
- * Time: 16:34
- */
-
 namespace App\Http\Controllers;
 
 use Zofe\Rapyd\DataGrid\DataGrid;
 use Zofe\Rapyd\DataEdit\DataEdit;
 use App\Partner;
+use App\RapydControllerInterface;
 
-class PartnerController extends Controller
+
+class PartnerController extends Controller implements RapydControllerInterface
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getGrid()
     {
 
@@ -21,11 +19,13 @@ class PartnerController extends Controller
 
         $grid->add('id', 'ID', true)->style("width:100px");
         $grid->add('name', 'Name');
-        $grid->add('logo', 'Logo');
+
         $grid->add('{{ $partnerCategory->name }}', 'Partner Category', 'name');
         $grid->add('location', 'Адрес');
+
         $grid->edit('/partners/edit', 'Edit', 'show|modify');
         $grid->link('/partners/edit', "New Article", "TR");
+
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);
 
