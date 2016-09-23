@@ -1,28 +1,31 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Zofe\Rapyd\DataGrid\DataGrid;
 use Zofe\Rapyd\DataEdit\DataEdit;
-use App\Partner;
+
 use App\Interfaces\RapydControllerInterface;
+use App\View;
+use App\Gift;
 
-
-class PartnerController extends Controller implements RapydControllerInterface
+class GiftController extends Controller implements RapydControllerInterface
 {
+
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function getGrid()
     {
-        $grid = \DataGrid::source(Partner::with('partnerCategory'));
+        $grid = \DataGrid::source(Gift::with('partner'));
 
         $grid->add('id', 'ID', true)->style("width:100px");
         $grid->add('name', 'Name');
-        $grid->add('{{ $partnerCategory->name }}', 'Partner Category', 'name');
-        $grid->add('location', 'Адрес');
+        $grid->add('price', 'Цена');
+        $grid->add('{{ $partner->name }}', 'Магазин', 'name');
 
-        $grid->edit('/partners/edit', 'Edit', 'show|modify');
-        $grid->link('/partners/edit', "New Article", "TR");
+        $grid->edit('/gifts/edit', 'Edit', 'show|modify');
+        $grid->link('/gifts/edit', "New Article", "TR");
 
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);
@@ -40,20 +43,20 @@ class PartnerController extends Controller implements RapydControllerInterface
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return View
      */
     public function getEdit()
     {
-        $edit = DataEdit::source(new Partner);
+        $edit = DataEdit::source(new Gift);
 
         $edit->add('id', 'ID', 'text')->rule('required');
         $edit->add('name', 'Name', 'text')->rule('required');
-        $edit->add('partnerCategory.name', 'Категория', 'autocomplete')->search(['name'])->rule('required');
-        $edit->add('location', 'Адрес', 'text')->rule('required');
+        $edit->add('price', 'Цена', 'text')->rule('required');
+        $edit->add('partner.name', 'Магазин', 'autocomplete')->search(['name'])->rule('required');
         $edit->add('description', 'Описание', 'textarea')->rule('required');
         $edit->add('logo', 'Логотип', 'image')->rule('required');
 
-        $edit->link('/partners/grid', "List", "TR");
+        $edit->link('/gifts/grid', "List", "TR");
 
         return view('rapyd::demo.edit', compact('edit'));
     }
