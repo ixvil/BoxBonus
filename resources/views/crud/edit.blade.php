@@ -1,10 +1,7 @@
-@extends('rapyd::demo.demo')
-
-@section('title','DataEdit')
+@extends('crud/top')
 
 @section('body')
 
-    <h1>DataEdit</h1>
     <p>
         {!! $edit !!}
     </p>

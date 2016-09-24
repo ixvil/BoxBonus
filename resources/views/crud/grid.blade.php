@@ -1,10 +1,7 @@
-@extends('rapyd::demo.demo')
-
-@section('title','DataGrid')
+@extends('crud/top')
 
 @section('body')
 
-    <h1>DataGrid</h1>
     <p>
 
         {!! $grid !!}
