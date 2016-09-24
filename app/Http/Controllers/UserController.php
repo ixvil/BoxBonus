@@ -1,15 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: shipin_a
+ * Date: 25.09.2016
+ * Time: 0:29
+ */
 
 namespace App\Http\Controllers;
 
-use Zofe\Rapyd\DataGrid\DataGrid;
-use Zofe\Rapyd\DataEdit\DataEdit;
 
 use App\Interfaces\RapydControllerInterface;
-use App\View;
-use App\Gift;
+use App\Interfaces\View;
+use Zofe\Rapyd\DataEdit\DataEdit;
+use Zofe\Rapyd\DataGrid\DataGrid;
+use App\User;
 
-class GiftController extends Controller implements RapydControllerInterface
+class UserController extends Controller implements RapydControllerInterface
 {
 
     /**
@@ -17,18 +23,17 @@ class GiftController extends Controller implements RapydControllerInterface
      */
     public function getGrid()
     {
-        $grid = DataGrid::source(Gift::with('partner'));
-
+        $grid = DataGrid::source(User::with('userType'));
         $grid->add('id', 'ID', true)->style("width:100px");
         $grid->add('name', 'Name');
-        $grid->add('price', 'Цена');
-        $grid->add('{{ $partner->name }}', 'Магазин', 'name');
+        $grid->add('{{ $userType->name }}', 'UserType', 'name');
 
-        $grid->edit('/gifts/edit', 'Edit', 'show|modify');
-        $grid->link('/gifts/edit', "New Gift", "TR");
+        $grid->edit('/users/edit', 'Edit', 'show|modify');
+        $grid->link('/users/edit', "New User", "TR");
 
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);
+
 
         $grid->row(function ($row) {
             if ($row->cell('id')->value == 20) {
@@ -47,16 +52,13 @@ class GiftController extends Controller implements RapydControllerInterface
      */
     public function getEdit()
     {
-        $edit = DataEdit::source(new Gift);
+        $edit = DataEdit::source(new User);
 
         $edit->add('id', 'ID', 'text')->rule('required');
         $edit->add('name', 'Name', 'text')->rule('required');
-        $edit->add('price', 'Цена', 'text')->rule('required');
-        $edit->add('partner.name', 'Магазин', 'autocomplete')->search(['name'])->rule('required');
-        $edit->add('description', 'Описание', 'textarea')->rule('required');
-        $edit->add('logo', 'Логотип', 'image')->rule('required');
+        $edit->add('userType.name', 'Тип пользователя', 'autocomplete')->search(['name'])->rule('required');
 
-        $edit->link('/gifts/grid', "List", "TR");
+        $edit->link('/users/grid', "List", "TR");
 
         return view('crud/edit', compact('edit'));
     }

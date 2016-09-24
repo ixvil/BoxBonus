@@ -14,7 +14,7 @@ class PartnerController extends Controller implements RapydControllerInterface
      */
     public function getGrid()
     {
-        $grid = \DataGrid::source(Partner::with('partnerCategory'));
+        $grid = DataGrid::source(Partner::with('partnerCategory'));
 
         $grid->add('id', 'ID', true)->style("width:100px");
         $grid->add('name', 'Name');
@@ -22,7 +22,7 @@ class PartnerController extends Controller implements RapydControllerInterface
         $grid->add('location', 'Адрес');
 
         $grid->edit('/partners/edit', 'Edit', 'show|modify');
-        $grid->link('/partners/edit', "New Article", "TR");
+        $grid->link('/partners/edit', "New Partner", "TR");
 
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);

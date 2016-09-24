@@ -13,7 +13,7 @@ class AddUserIdAndBalanceToCustomerTable extends Migration
      */
     public function up()
     {
-        Schema::table('customers', function ($table) {
+        Schema::table('customers', function (Blueprint $table) {
             $table->integer('balance');
             $table->integer('user_id');
 
@@ -30,7 +30,7 @@ class AddUserIdAndBalanceToCustomerTable extends Migration
      */
     public function down()
     {
-        Schema::table('customers', function ($table) {
+        Schema::table('customers', function (Blueprint $table) {
             $table->dropForeign('fk_customers_users1');
             $table->dropColumn(array('balance', 'user_id'));
         });

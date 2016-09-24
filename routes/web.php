@@ -19,3 +19,6 @@ Route::any('/partners/grid', 'PartnerController@getGrid');
 
 Route::any('/gifts/edit', 'GiftController@getEdit');
 Route::any('/gifts/grid', 'GiftController@getGrid');
+
+Route::any('/users/edit', 'UserController@getEdit');
+Route::any('/users/grid', 'UserController@getGrid');
