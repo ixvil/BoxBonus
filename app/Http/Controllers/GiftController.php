@@ -39,7 +39,7 @@ class GiftController extends Controller implements RapydControllerInterface
             }
         });
 
-        return view('rapyd::demo.grid', compact('grid'));
+        return view('crud/grid', compact('grid'));
     }
 
     /**
@@ -58,6 +58,6 @@ class GiftController extends Controller implements RapydControllerInterface
 
         $edit->link('/gifts/grid', "List", "TR");
 
-        return view('rapyd::demo.edit', compact('edit'));
+        return view('crud/edit', compact('edit'));
     }
 }
