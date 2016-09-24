@@ -5,21 +5,29 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Customer
- *
  * @property integer $id
+ * @property integer $user_id
+ * @property integer $balance
+ * @property string $created_at
+ * @property string $updated_at
+ * @property User $user
  * @property CustomerArrival[] $customerArrivals
  * @property CustomerSpent[] $customerSpents
- * @property User[] $users
- * @method static \Illuminate\Database\Query\Builder|\App\Customer whereId($value)
- * @mixin \Eloquent
  */
 class Customer extends Model
 {
     /**
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['user_id', 'balance', 'created_at', 'updated_at'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -35,13 +43,5 @@ class Customer extends Model
     public function customerSpents()
     {
         return $this->hasMany('App\CustomerSpent', 'customers_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function users()
-    {
-        return $this->hasMany('App\User');
     }
 }
