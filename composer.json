@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-ide-helper": "^2.2",
-        "zofe/rapyd": "^2.2"
+        "zofe/rapyd": "^2.2",
+        "nilportugues/laravel5-json-api": "^2.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -16,9 +17,7 @@
         "phpunit/phpunit": "~5.0",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
-        "krlove/eloquent-model-generator": "^1.2",
-        "xethron/migrations-generator": "dev-l5",
-        "way/generators": "dev-feature/laravel-five-stable"
+        "krlove/eloquent-model-generator": "^1.2"
     },
     "autoload": {
         "classmap": [
@@ -46,6 +45,8 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
     },
