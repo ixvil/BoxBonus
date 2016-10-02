@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Customer;
+use App\Models\Customer;
 use App\Interfaces\RapydControllerInterface;
 use App\Interfaces\View;
 use Zofe\Rapyd\DataEdit\DataEdit;

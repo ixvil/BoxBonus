@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property integer $partners_id
  * @property Partner $partner
- * @method static \Illuminate\Database\Query\Builder|\App\News whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\News wherePartnersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\News whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\News wherePartnersId($value)
  * @mixin \Eloquent
  */
 class News extends Model
@@ -26,6 +26,6 @@ class News extends Model
      */
     public function partner()
     {
-        return $this->belongsTo('App\Partner', 'partners_id');
+        return $this->belongsTo('App\Models\Partner', 'partners_id');
     }
 }

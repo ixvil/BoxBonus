@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property integer $id
  * @property User[] $users
- * @method static \Illuminate\Database\Query\Builder|\App\UserType whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\UserType whereId($value)
  * @mixin \Eloquent
  */
 class UserType extends Model
@@ -24,6 +24,6 @@ class UserType extends Model
      */
     public function users()
     {
-        return $this->hasMany('App\User');
+        return $this->hasMany('App\Models\User');
     }
 }

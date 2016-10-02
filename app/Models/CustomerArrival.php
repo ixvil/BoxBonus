@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $partners_id
  * @property Customer $customer
  * @property Partner $partner
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerArrival whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerArrival whereCustomersId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerArrival wherePartnersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArrival whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArrival whereCustomersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerArrival wherePartnersId($value)
  * @mixin \Eloquent
  */
 class CustomerArrival extends Model
@@ -29,7 +29,7 @@ class CustomerArrival extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Customer', 'customers_id');
+        return $this->belongsTo('App\Models\Customer', 'customers_id');
     }
 
     /**
@@ -37,6 +37,6 @@ class CustomerArrival extends Model
      */
     public function partner()
     {
-        return $this->belongsTo('App\Partner', 'partners_id');
+        return $this->belongsTo('App\Models\Partner', 'partners_id');
     }
 }

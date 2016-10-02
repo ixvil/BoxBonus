@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,8 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $partner_id
  * @property Partner $partner
  * @property CustomerSpent[] $customerSpents
- * @method static \Illuminate\Database\Query\Builder|\App\Gift whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Gift wherePartnerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Gift whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Gift wherePartnerId($value)
  * @mixin \Eloquent
  */
 class Gift extends Model
@@ -27,7 +27,7 @@ class Gift extends Model
      */
     public function partner()
     {
-        return $this->belongsTo('App\Partner');
+        return $this->belongsTo('App\Models\Partner');
     }
 
     /**
@@ -35,6 +35,6 @@ class Gift extends Model
      */
     public function customerSpents()
     {
-        return $this->hasMany('App\CustomerSpent', 'gifts_id');
+        return $this->hasMany('App\Models\CustomerSpent', 'gifts_id');
     }
 }

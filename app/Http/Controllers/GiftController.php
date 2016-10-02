@@ -7,7 +7,7 @@ use Zofe\Rapyd\DataEdit\DataEdit;
 
 use App\Interfaces\RapydControllerInterface;
 use App\View;
-use App\Gift;
+use App\Models\Gift;
 
 class GiftController extends Controller implements RapydControllerInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +26,7 @@ class Customer extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
@@ -34,7 +34,7 @@ class Customer extends Model
      */
     public function customerArrivals()
     {
-        return $this->hasMany('App\CustomerArrival', 'customers_id');
+        return $this->hasMany('App\Models\CustomerArrival', 'customers_id');
     }
 
     /**
@@ -42,6 +42,6 @@ class Customer extends Model
      */
     public function customerSpents()
     {
-        return $this->hasMany('App\CustomerSpent', 'customers_id');
+        return $this->hasMany('App\Models\CustomerSpent', 'customers_id');
     }
 }

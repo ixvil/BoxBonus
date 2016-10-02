@@ -9,7 +9,7 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-ide-helper": "^2.2",
         "zofe/rapyd": "^2.2",
-        "nilportugues/laravel5-json-api": "^2.4"
+        "neomerx/json-api": "^0.8.10"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

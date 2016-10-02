@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,10 +14,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property Customer $customer
  * @property Gift $gift
  * @property Partner $partner
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent whereCustomersId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent wherePartnersId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\CustomerSpent whereGiftsId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerSpent whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerSpent whereCustomersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerSpent wherePartnersId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\CustomerSpent whereGiftsId($value)
  * @mixin \Eloquent
  */
 class CustomerSpent extends Model
@@ -32,7 +32,7 @@ class CustomerSpent extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Customer', 'customers_id');
+        return $this->belongsTo('App\Models\Customer', 'customers_id');
     }
 
     /**
@@ -40,7 +40,7 @@ class CustomerSpent extends Model
      */
     public function gift()
     {
-        return $this->belongsTo('App\Gift', 'gifts_id');
+        return $this->belongsTo('App\Models\Gift', 'gifts_id');
     }
 
     /**
@@ -48,6 +48,6 @@ class CustomerSpent extends Model
      */
     public function partner()
     {
-        return $this->belongsTo('App\Partner', 'partners_id');
+        return $this->belongsTo('App\Models\Partner', 'partners_id');
     }
 }

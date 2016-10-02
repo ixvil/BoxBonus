@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $user_id
  * @property Partner $partner
  * @property User $user
- * @method static \Illuminate\Database\Query\Builder|\App\PartnerUser whereUserId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\PartnerUser wherePartnerId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\PartnerUser whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\PartnerUser whereUserId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\PartnerUser wherePartnerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\PartnerUser whereId($value)
  * @mixin \Eloquent
  */
 class PartnerUser extends Model
@@ -29,7 +29,7 @@ class PartnerUser extends Model
      */
     public function partner()
     {
-        return $this->belongsTo('App\Partner');
+        return $this->belongsTo('App\Models\Partner');
     }
 
     /**
@@ -37,6 +37,6 @@ class PartnerUser extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,12 +13,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property integer $user_type_id
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $unreadNotifications
- * @method static \Illuminate\Database\Query\Builder|\App\User whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereCustomerId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\User whereUserTypeId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereCustomerId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUserTypeId($value)
  * @mixin \Eloquent
  * @property string $name
- * @method static \Illuminate\Database\Query\Builder|\App\User whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereName($value)
  */
 class User extends Authenticatable
 {
@@ -47,7 +47,7 @@ class User extends Authenticatable
      */
     public function userType()
     {
-        return $this->belongsTo('App\UserType');
+        return $this->belongsTo('App\Models\UserType');
     }
 
     /**
@@ -55,7 +55,7 @@ class User extends Authenticatable
      */
     public function partnerUsers()
     {
-        return $this->hasMany('App\PartnerUser');
+        return $this->hasMany('App\Models\PartnerUser');
     }
 }
 

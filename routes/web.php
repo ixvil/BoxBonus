@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*
+ * Routes for Rapyd Crud
+ */
 Route::any('/partners/edit', 'PartnerController@getEdit');
 Route::any('/partners/grid', 'PartnerController@getGrid');
 
@@ -25,3 +29,9 @@ Route::any('/users/grid', 'UserController@getGrid');
 
 Route::any('/customers/edit', 'CustomerController@getEdit');
 Route::any('/customers/grid', 'CustomerController@getGrid');
+
+/*
+ * JSON routes
+ */
+Route::any('/json/getuser/{userCode}', 'JsonController@getUser');
+

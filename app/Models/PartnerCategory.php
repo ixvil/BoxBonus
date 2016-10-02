@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $id
  * @property string $name
  * @property Partner[] $partners
- * @method static \Illuminate\Database\Query\Builder|\App\PartnerCategory whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\PartnerCategory whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\PartnerCategory whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\PartnerCategory whereName($value)
  * @mixin \Eloquent
  */
 class PartnerCategory extends Model
@@ -26,6 +26,6 @@ class PartnerCategory extends Model
      */
     public function partners()
     {
-        return $this->hasMany('App\Partner', 'partner_categories_id');
+        return $this->hasMany('App\Models\Partner', 'partner_categories_id');
     }
 }

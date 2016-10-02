@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,9 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Gift[] $gifts
  * @property News[] $news
  * @property PartnerUser[] $partnerUsers
- * @method static \Illuminate\Database\Query\Builder|\App\Partner whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Partner wherePartnerCategoriesId($value)
- * @method static \Illuminate\Database\Query\Builder|\App\Partner whereName($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Partner whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Partner wherePartnerCategoriesId($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Partner whereName($value)
  * @mixin \Eloquent
  */
 class Partner extends Model
@@ -33,7 +33,7 @@ class Partner extends Model
      */
     public function partnerCategory()
     {
-        return $this->belongsTo('App\PartnerCategory', 'partner_categories_id');
+        return $this->belongsTo('App\Models\PartnerCategory', 'partner_categories_id');
     }
 
     /**
@@ -41,7 +41,7 @@ class Partner extends Model
      */
     public function customerArrivals()
     {
-        return $this->hasMany('App\CustomerArrival', 'partners_id');
+        return $this->hasMany('App\Models\CustomerArrival', 'partners_id');
     }
 
     /**
@@ -49,7 +49,7 @@ class Partner extends Model
      */
     public function customerSpents()
     {
-        return $this->hasMany('App\CustomerSpent', 'partners_id');
+        return $this->hasMany('App\Models\CustomerSpent', 'partners_id');
     }
 
     /**
@@ -57,7 +57,7 @@ class Partner extends Model
      */
     public function gifts()
     {
-        return $this->hasMany('App\Gift');
+        return $this->hasMany('App\Models\Gift');
     }
 
     /**
@@ -65,7 +65,7 @@ class Partner extends Model
      */
     public function news()
     {
-        return $this->hasMany('App\News', 'partners_id');
+        return $this->hasMany('App\Models\News', 'partners_id');
     }
 
     /**
@@ -73,6 +73,6 @@ class Partner extends Model
      */
     public function partnerUsers()
     {
-        return $this->hasMany('App\PartnerUser');
+        return $this->hasMany('App\Models\PartnerUser');
     }
 }

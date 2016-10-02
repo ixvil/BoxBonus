@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Zofe\Rapyd\DataGrid\DataGrid;
 use Zofe\Rapyd\DataEdit\DataEdit;
-use App\Partner;
+use App\Models\Partner;
 use App\Interfaces\RapydControllerInterface;
 
 

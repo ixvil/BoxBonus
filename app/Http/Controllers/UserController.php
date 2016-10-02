@@ -13,7 +13,7 @@ use App\Interfaces\RapydControllerInterface;
 use App\Interfaces\View;
 use Zofe\Rapyd\DataEdit\DataEdit;
 use Zofe\Rapyd\DataGrid\DataGrid;
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller implements RapydControllerInterface
 {
