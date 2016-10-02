@@ -23,3 +23,11 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Partner::class, function (Faker\Generator $faker) {
+    return [
+        'partner_categories_id' => 1,
+        'name' => $faker->company,
+        'location' => $faker->streetAddress,
+        'description' => $faker->realText()
+    ];
+});
