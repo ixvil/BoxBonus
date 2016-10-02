@@ -14,7 +14,7 @@ use Neomerx\JsonApi\Schema\SchemaProvider;
 
 class CustomerSchema extends SchemaProvider
 {
-    protected $resourceType = 'people';
+    protected $resourceType = 'Customer';
 
     /**
      * Get resource identity.

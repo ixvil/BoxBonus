@@ -30,12 +30,12 @@ class JsonController extends Controller
     {
         $user = User::find($userId);
 
+        /** @var Encoder $encoder */
         $encoder = Encoder::instance([
             User::class => UserSchema::class
         ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
 
         $json = $encoder->encodeData($user);
-
         return view('json', compact('json'));
     }
 
@@ -47,6 +47,7 @@ class JsonController extends Controller
     {
         $customer = Customer::find($customerId);
 
+        /** @var Encoder $encoder */
         $encoder = Encoder::instance([
             Customer::class => CustomerSchema::class
         ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
