@@ -18,6 +18,7 @@ class CreateCustomerSpentsTable extends Migration {
 			$table->integer('customers_id')->index('fk_customer_spents_customers1_idx');
 			$table->integer('partners_id')->index('fk_customer_spents_partners1_idx');
 			$table->integer('gifts_id')->index('fk_customer_spents_gifts1_idx');
+            $table->timestamps();
 		});
 	}
 

@@ -32,7 +32,7 @@ class UserController extends Controller implements RapydControllerInterface
         $grid->link('/users/edit', "New User", "TR");
 
         $grid->orderBy('id', 'desc');
-        $grid->paginate(10);
+        $grid->paginate(100);
 
 
         $grid->row(function ($row) {

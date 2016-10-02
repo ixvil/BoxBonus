@@ -15,8 +15,9 @@ class CreatePartnerUsersTable extends Migration {
 		Schema::create('partner_users', function(Blueprint $table)
 		{
 			$table->integer('user_id')->index('fk_user_partners_users1_idx');
-			$table->integer('partner_id')->index('fk_user_partners_partners1_idx');
+			$table->integer('partner_id')->index('fk_user_partners_partners1_idx')->default(null);
 			$table->integer('id')->primary();
+            $table->timestamps();
 		});
 	}
 

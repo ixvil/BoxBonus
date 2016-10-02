@@ -16,6 +16,7 @@ class CreateNewsTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->integer('partners_id')->index('fk_news_partners1_idx');
+            $table->timestamps();
 		});
 	}
 

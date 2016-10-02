@@ -17,6 +17,7 @@ class CreateCustomerArrivalsTable extends Migration {
 			$table->integer('id', true);
 			$table->integer('customers_id')->index('fk_operations_customers1_idx');
 			$table->integer('partners_id')->index('fk_operations_partners1_idx');
+            $table->timestamps();
 		});
 	}
 

@@ -21,6 +21,7 @@ class CreatePartnersTable extends Migration {
 			$table->text('description', 65535)->nullable();
 			$table->string('location')->nullable();
 			$table->string('logo', 45)->nullable();
+
 		});
 	}
 
