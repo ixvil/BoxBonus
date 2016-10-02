@@ -15,7 +15,7 @@ class AddUserIdAndBalanceToCustomerTable extends Migration
     {
         Schema::table('customers', function (Blueprint $table) {
             $table->integer('balance');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
 
             $table->foreign('user_id', 'fk_customers_users1')->references('id')->on('users')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });

@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\UserType;
 
 
-class UserSeeder extends Seeder
+class CustomerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +12,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, 10)->create()->each(function (User $u) {
-            $u->user_type_id = 1;
+        factory(App\Models\Customer::class, 10)->create()->each(function (App\Models\Customer $u) {
+            $u->user_id = $u->id;
             $u->save();
         });
     }
