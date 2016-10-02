@@ -31,3 +31,13 @@ $factory->define(App\Models\Partner::class, function (Faker\Generator $faker) {
         'description' => $faker->realText()
     ];
 });
+
+$factory->define(App\Models\Gift::class, function (Faker\Generator $faker) {
+    return [
+        'partner_id' => rand(1, 10),
+        'name' => $faker->word,
+        'description' => $faker->realText(),
+        'price' => rand(1, 5) * 25
+
+    ];
+});
