@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Customer;
+use App\Schemas\CustomerSchema;
 use App\Schemas\SchemaFactory;
 use App\Schemas\UserSchema;
 
@@ -18,7 +20,7 @@ use Neomerx\JsonApi\Encoder\EncoderOptions;
 
 class JsonController extends Controller
 {
-
+    protected $prefixUrl = "http://example.com/api/v1";
 
     /**
      * @param int $userId
@@ -30,11 +32,26 @@ class JsonController extends Controller
 
         $encoder = Encoder::instance([
             User::class => UserSchema::class
-        ], new EncoderOptions(JSON_PRETTY_PRINT, 'http://example.com/api/v1'));
+        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
 
         $json = $encoder->encodeData($user);
 
+        return view('json', compact('json'));
+    }
 
+    /**
+     * @param int $customerId
+     * @return View
+     */
+    function getCustomer(int $customerId): View
+    {
+        $customer = Customer::find($customerId);
+
+        $encoder = Encoder::instance([
+            Customer::class => CustomerSchema::class
+        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
+
+        $json = $encoder->encodeData($customer);
         return view('json', compact('json'));
     }
 }

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property User $user
  * @property CustomerArrival[] $customerArrivals
- * @property CustomerSpent[] $customerSpents
+ * @property CustomerSpent[] $customerScents
  */
 class Customer extends Model
 {

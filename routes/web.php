@@ -34,4 +34,5 @@ Route::any('/customers/grid', 'CustomerController@getGrid');
  * JSON routes
  */
 Route::any('/json/getuser/{userCode}', 'JsonController@getUser');
+Route::any('/json/getcustomer/{customerCode}', 'JsonController@getCustomer');
 
