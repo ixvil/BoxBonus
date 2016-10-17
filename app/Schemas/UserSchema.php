@@ -1,14 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: shipin_a
- * Date: 02.10.2016
- * Time: 2:43
- */
+<?php declare(strict_types = 1);
 
 namespace App\Schemas;
 
 
+use App\Models\Customer;
 use App\Models\User;
 use Neomerx\JsonApi\Schema\SchemaProvider;
 
@@ -20,10 +15,10 @@ class UserSchema extends SchemaProvider
      * Get resource identity.
      *
      * @param User $user
-     * @return string
+     * @return int
      *
      */
-    public function getId($user): string
+    public function getId ($user): int
     {
         return $user->id;
     }
@@ -35,8 +30,11 @@ class UserSchema extends SchemaProvider
      *
      * @return array
      */
-    public function getAttributes($user)
+    public function getAttributes ($user)
     {
-        return array('name' => $user->name);
+        return array(
+            'name' => $user->name,
+            'customer' => Customer::where('user_id', $user->id)->first());
+
     }
 }

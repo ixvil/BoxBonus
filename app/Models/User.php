@@ -50,6 +50,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\UserType');
     }
 
+    public function customer ()
+    {
+        return $this->belongsTo('App\Models\Customer');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
