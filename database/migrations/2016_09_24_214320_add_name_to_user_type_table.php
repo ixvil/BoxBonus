@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,7 +11,7 @@ class AddNameToUserTypeTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up ()
     {
         Schema::table('user_types', function (Blueprint $table) {
             $table->string('name');
@@ -23,7 +23,7 @@ class AddNameToUserTypeTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down ()
     {
         Schema::table('user_types', function (Blueprint $table) {
             $table->dropColumn('name');

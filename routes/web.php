@@ -36,3 +36,8 @@ Route::any('/customers/grid', 'CustomerController@getGrid');
 Route::any('/json/getuser/{userCode}', 'JsonController@getUser');
 Route::any('/json/getcustomer/{customerCode}', 'JsonController@getCustomer');
 
+Route::any('/json/login/', 'JsonController@loginUser');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

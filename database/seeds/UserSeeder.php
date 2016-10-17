@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
@@ -12,11 +12,20 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run ()
     {
         factory(User::class, 10)->create()->each(function (User $u) {
             $u->user_type_id = 1;
             $u->save();
         });
+
+        DB::table('users')->insert([
+            'user_type_id' => 1,
+            'name' => 'Фёдор Конюхов',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+            'email' => 'ixvil@mail.ru',
+            'password' => hash('sha256', 'TestPassword')
+        ]);
     }
 }

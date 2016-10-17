@@ -23,7 +23,7 @@ class CustomerSchema extends SchemaProvider
      * @return string
      *
      */
-    public function getId($customer): string
+    public function getId ($customer): string
     {
         return $customer->id;
     }
@@ -34,9 +34,11 @@ class CustomerSchema extends SchemaProvider
      * @param Customer $customer
      * @return array
      */
-    public function getAttributes($customer): array
+    public function getAttributes ($customer): array
     {
 
-        return array('balance' => $customer->balance);
+        return array(
+            'balance' => $customer->balance,
+            'user' => $customer->user);
     }
 }

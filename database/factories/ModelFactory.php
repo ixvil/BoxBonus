@@ -18,8 +18,11 @@ $factory->define(App\Models\Customer::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+    $email = $faker->email;
     return [
         'name' => $faker->name,
+        'email' => $email,
+        'password' => hash('sha256', $email)
     ];
 });
 

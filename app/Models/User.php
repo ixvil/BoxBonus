@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace App\Models;
 
@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
- * App\User
+ * App\Models\User
  *
  * @property integer $id
  * @property integer $customer_id
@@ -45,7 +45,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function userType()
+    public function userType ()
     {
         return $this->belongsTo('App\Models\UserType');
     }
@@ -53,7 +53,7 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function partnerUsers()
+    public function partnerUsers ()
     {
         return $this->hasMany('App\Models\PartnerUser');
     }
