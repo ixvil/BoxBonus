@@ -78,6 +78,9 @@ class JsonController extends Controller
         ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
 
         $json = $encoder->encodeData($user);
+        if (!$user->id) {
+            $json = null;
+        }
         return view('json', compact('json'));
 
     }
