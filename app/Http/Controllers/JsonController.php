@@ -79,7 +79,7 @@ class JsonController extends Controller
 
         $json = $encoder->encodeData($user);
         if (!$user->id) {
-            $json = null;
+            $json = json_encode(Array('data' => Array('id' => 0)));
         }
         return view('json', compact('json'));
 
