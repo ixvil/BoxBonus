@@ -85,4 +85,39 @@ class JsonController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function registerUser (Request $request): View
+    {
+        $credentials = $request->all();
+        $user = User::where('email', $credentials['email'])
+            ->first();
+
+        if ((isset($user->id)) && $user->id > 0) {
+            $json = json_encode(Array('data' => Array('id' => 0, 'message' => 'User already exists')));
+        } else {
+            $user = new User;
+            $user->email = $credentials['email'];
+            $user->password = $credentials['password'];
+            $user->user_type_id = 1;
+            $user->save();
+
+            $customer = new Customer;
+            $customer->balance = 0;
+            $customer->user_id = $user->id;
+            $customer->save();
+
+            /** @var Encoder $encoder */
+            $encoder = Encoder::instance([
+                User::class => UserSchema::class
+            ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
+
+            $json = $encoder->encodeData($user);
+
+        }
+        return view('json', compact('json'));
+    }
+
 }

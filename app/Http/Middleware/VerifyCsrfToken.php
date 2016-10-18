@@ -24,7 +24,10 @@ class VerifyCsrfToken extends BaseVerifier
          * @$this->except Array
          */
 
-        $this->except = ['/json/login/'];
+        $this->except = [
+            '/json/login/',
+            '/json/register/'
+        ];
     }
 
 

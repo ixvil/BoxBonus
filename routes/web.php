@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +37,11 @@ Route::any('/json/getuser/{userCode}', 'JsonController@getUser');
 Route::any('/json/getcustomer/{customerCode}', 'JsonController@getCustomer');
 
 Route::any('/json/login/', 'JsonController@loginUser');
+Route::any('/json/register/', 'JsonController@registerUser');
 
+/*
+ * Auth routes
+ */
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
