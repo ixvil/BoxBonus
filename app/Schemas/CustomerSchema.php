@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 /**
  * Created by PhpStorm.
  * User: shipin_a
@@ -20,10 +20,10 @@ class CustomerSchema extends SchemaProvider
      * Get resource identity.
      *
      * @param Customer $customer
-     * @return string
+     * @return int
      *
      */
-    public function getId ($customer): string
+    public function getId ($customer): int
     {
         return $customer->id;
     }
@@ -39,6 +39,8 @@ class CustomerSchema extends SchemaProvider
 
         return array(
             'balance' => $customer->balance,
-            'user' => $customer->user);
+            'user' => $customer->user,
+            'walletId' => $customer->walletId
+        );
     }
 }

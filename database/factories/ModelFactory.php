@@ -14,6 +14,7 @@
 $factory->define(App\Models\Customer::class, function (Faker\Generator $faker) {
     return [
         'balance' => rand(0, 400),
+        'walletId' => rand(100000000, 999999999)
     ];
 });
 
