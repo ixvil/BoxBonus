@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'user_type_id' => 1,
             'name' => 'Фёдор Конюхов',
+            'phone' => '79096511403',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
             'email' => 'ixvil@mail.ru',

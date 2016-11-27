@@ -45,12 +45,12 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function userType ()
+    public function userType()
     {
         return $this->belongsTo('App\Models\UserType');
     }
 
-    public function customer ()
+    public function customer()
     {
         return $this->belongsTo('App\Models\Customer');
     }
@@ -58,9 +58,11 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function partnerUsers ()
+    public function partnerUsers()
     {
         return $this->hasMany('App\Models\PartnerUser');
     }
+
+
 }
 

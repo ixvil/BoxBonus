@@ -31,7 +31,7 @@ class JsonController extends Controller
      * @param int $userId
      * @return View
      */
-    public function getUser (int $userId): View
+    public function getUser(int $userId): View
     {
         $user = User::find($userId);
 
@@ -44,11 +44,28 @@ class JsonController extends Controller
         return view('json', compact('json'));
     }
 
+//    /**
+//     * @param int $userId
+//     * @return View
+//     */
+//    public function getShops(): View
+//    {
+//        $shops = User::find($userId);
+//
+//        /** @var Encoder $encoder */
+//        $encoder = Encoder::instance([
+//            User::class => UserSchema::class
+//        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
+//
+//        $json = $encoder->encodeData($user);
+//        return view('json', compact('json'));
+//    }
+
     /**
      * @param int $customerId
      * @return View
      */
-    public function getCustomer (int $customerId): View
+    public function getCustomer(int $customerId): View
     {
         $customer = Customer::find($customerId);
 
@@ -65,12 +82,11 @@ class JsonController extends Controller
      * @param Request $request
      * @return View
      */
-    public function loginUser (Request $request): View
+    public function loginUser(Request $request): View
     {
         $credentials = $request->all();
-        $user = User::where('email', $credentials['email'])
+        $user = User::where('phone', $credentials['phone'])
             ->where('password', $credentials['password'])->first();
-
 
         /** @var Encoder $encoder */
         $encoder = Encoder::instance([
@@ -89,17 +105,17 @@ class JsonController extends Controller
      * @param Request $request
      * @return View
      */
-    public function registerUser (Request $request): View
+    public function registerUser(Request $request): View
     {
         $credentials = $request->all();
-        $user = User::where('email', $credentials['email'])
+        $user = User::where('phone', $credentials['phone'])
             ->first();
 
         if ((isset($user->id)) && $user->id > 0) {
             $json = json_encode(Array('data' => Array('id' => 0, 'message' => 'User already exists')));
         } else {
             $user = new User;
-            $user->email = $credentials['email'];
+            $user->phone = $credentials['phone'];
             $user->password = $credentials['password'];
             $user->user_type_id = 1;
             $user->save();
@@ -107,6 +123,7 @@ class JsonController extends Controller
             $customer = new Customer;
             $customer->balance = 0;
             $customer->user_id = $user->id;
+            $customer->walletId = Customer::getUnusedWalletId();
             $customer->save();
 
             /** @var Encoder $encoder */

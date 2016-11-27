@@ -23,6 +23,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $email,
+        'phone' => rand(79000000000, 79999999999),
         'password' => hash('sha256', $email)
     ];
 });

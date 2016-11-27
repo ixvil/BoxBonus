@@ -15,7 +15,7 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->integer('walletId', false);
+            $table->integer('walletId', false)->unique();
             $table->timestamps();
         });
     }

@@ -23,7 +23,7 @@ class Customer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user ()
+    public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
@@ -31,7 +31,7 @@ class Customer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function customerArrivals ()
+    public function customerArrivals()
     {
         return $this->hasMany('App\Models\CustomerArrival', 'customers_id');
     }
@@ -39,8 +39,24 @@ class Customer extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function customerSpents ()
+    public function customerSpents()
     {
         return $this->hasMany('App\Models\CustomerSpent', 'customers_id');
+    }
+
+    /**
+     * @return int
+     */
+    public static function getUnusedWalletId(): int
+    {
+        $notYet = true;
+        while ($notYet) {
+            $wallet = rand(100000000, 999999999);
+            $user = Customer::where('walletId', $wallet)
+                ->first();
+            if (!isset($user['id'])) {
+                return $wallet;
+            }
+        }
     }
 }
