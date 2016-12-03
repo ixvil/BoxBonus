@@ -117,6 +117,8 @@ class JsonController extends Controller
             $user = new User;
             $user->phone = $credentials['phone'];
             $user->password = $credentials['password'];
+            $user->name = '';
+            $user->email = '';
             $user->user_type_id = 1;
             $user->save();
 
