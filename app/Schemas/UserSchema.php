@@ -34,6 +34,8 @@ class UserSchema extends SchemaProvider
     {
         return array(
             'name' => $user->name,
+            'phone' => $user->phone,
+            'email' => $user->email,
             'customer' => Customer::where('user_id', $user->id)->first());
 
     }
