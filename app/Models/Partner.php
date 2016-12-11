@@ -16,6 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Gift[] $gifts
  * @property News[] $news
  * @property PartnerUser[] $partnerUsers
+ * @property string logo
+ * @property string location
+ * @property string description
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Partner whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Partner wherePartnerCategoriesId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Partner whereName($value)
@@ -26,7 +29,14 @@ class Partner extends Model
     /**
      * @var array
      */
-    protected $fillable = ['partner_categories_id', 'name'];
+    protected $fillable = [
+        'partner_categories_id',
+        'name',
+        'description',
+        'location',
+        'logo'
+    ];
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

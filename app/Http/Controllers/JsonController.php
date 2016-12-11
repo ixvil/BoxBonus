@@ -10,10 +10,11 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Auth\JsonAuthController;
+use App\Models\Partner;
 use App\Models\User;
 use App\Models\Customer;
 use App\Schemas\CustomerSchema;
-use App\Schemas\SchemaFactory;
+use App\Schemas\PartnerSchema;
 use App\Schemas\UserSchema;
 
 use Illuminate\Contracts\View\View;
@@ -41,6 +42,22 @@ class JsonController extends Controller
         ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
 
         $json = $encoder->encodeData($user);
+        return view('json', compact('json'));
+    }
+
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function getPartners(Request $request): View
+    {
+        $partners = Partner::where('active', '=', 1)->get();
+
+        $encoder = Encoder::instance([
+            Partner::class => PartnerSchema::class
+        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
+
+        $json = $encoder->encodeData($partners);
         return view('json', compact('json'));
     }
 
@@ -138,5 +155,6 @@ class JsonController extends Controller
         }
         return view('json', compact('json'));
     }
+
 
 }

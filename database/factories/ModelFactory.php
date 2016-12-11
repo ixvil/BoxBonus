@@ -33,7 +33,8 @@ $factory->define(App\Models\Partner::class, function (Faker\Generator $faker) {
         'partner_categories_id' => 1,
         'name' => $faker->company,
         'location' => $faker->streetAddress,
-        'description' => $faker->realText()
+        'description' => $faker->realText(),
+        'active' => rand(0, 1)
     ];
 });
 
