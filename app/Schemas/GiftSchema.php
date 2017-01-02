@@ -6,7 +6,7 @@
  * Time: 3:18
  */
 
-namespace app\Schemas;
+namespace App\Schemas;
 
 
 use App\Models\Gift;
@@ -15,7 +15,7 @@ use Neomerx\JsonApi\Schema\SchemaProvider;
 
 class GiftSchema extends SchemaProvider
 {
-
+    protected $resourceType = 'Gift';
     /**
      * Get resource identity.
      *
@@ -25,7 +25,7 @@ class GiftSchema extends SchemaProvider
      */
     public function getId($resource)
     {
-        $resource->id;
+        return $resource->id;
     }
 
     /**

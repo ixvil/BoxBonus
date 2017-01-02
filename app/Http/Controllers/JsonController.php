@@ -15,7 +15,7 @@ use App\Models\Partner;
 use App\Models\User;
 use App\Models\Customer;
 use App\Schemas\CustomerSchema;
-use app\Schemas\GiftSchema;
+use App\Schemas\GiftSchema;
 use App\Schemas\PartnerSchema;
 use App\Schemas\UserSchema;
 
@@ -69,7 +69,7 @@ class JsonController extends Controller
      */
     public function getGifts(Request $request): View
     {
-        $gifts = Gift::where('active', '=', 1)->get();
+        $gifts = Gift::get();
 
         $encoder = Encoder::instance([
             Gift::class => GiftSchema::class
