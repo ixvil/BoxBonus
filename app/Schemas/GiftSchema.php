@@ -2,37 +2,36 @@
 /**
  * Created by PhpStorm.
  * User: ixvil
- * Date: 12.12.2016
- * Time: 1:40
+ * Date: 02.01.2017
+ * Time: 3:18
  */
 
-namespace App\Schemas;
+namespace app\Schemas;
 
 
+use App\Models\Gift;
 use App\Models\Partner;
-use App\Models\PartnerCategory;
 use Neomerx\JsonApi\Schema\SchemaProvider;
 
-class PartnerSchema extends SchemaProvider
+class GiftSchema extends SchemaProvider
 {
-    protected $resourceType = 'Partner';
 
     /**
      * Get resource identity.
      *
-     * @param Partner $resource
+     * @param Gift $resource
      *
      * @return string
      */
     public function getId($resource)
     {
-        return $resource->id;
+        $resource->id;
     }
 
     /**
      * Get resource attributes.
      *
-     * @param Partner $resource
+     * @param Gift $resource
      *
      * @return array
      */
@@ -40,11 +39,11 @@ class PartnerSchema extends SchemaProvider
     {
         return [
             'name' => $resource->name,
-            'partnerCategory' => PartnerCategory::find($resource->partner_categories_id),
             'description' => $resource->description,
-            'location' => $resource->location,
-            'logo' => $resource->logo
+            'logo' => $resource->logo,
+            'price' => $resource->price,
+            'partner' => Partner::find($resource->partner_id),
         ];
-
     }
+
 }

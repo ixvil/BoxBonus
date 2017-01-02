@@ -11,6 +11,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $partner_id
  * @property Partner $partner
  * @property CustomerSpent[] $customerSpents
+ * @property mixed price
+ * @property mixed logo
+ * @property mixed description
+ * @property mixed name
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Gift whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\Gift wherePartnerId($value)
  * @mixin \Eloquent

@@ -40,6 +40,7 @@ Route::any('/json/login/', 'JsonController@loginUser');
 Route::any('/json/register/', 'JsonController@registerUser');
 
 Route::any('/json/getpartners/', 'JsonController@getPartners');
+Route::any('/json/getgifts/', 'JsonController@getGifts');
 
 /*
  * Auth routes

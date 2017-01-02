@@ -10,10 +10,12 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Auth\JsonAuthController;
+use App\Models\Gift;
 use App\Models\Partner;
 use App\Models\User;
 use App\Models\Customer;
 use App\Schemas\CustomerSchema;
+use app\Schemas\GiftSchema;
 use App\Schemas\PartnerSchema;
 use App\Schemas\UserSchema;
 
@@ -61,22 +63,22 @@ class JsonController extends Controller
         return view('json', compact('json'));
     }
 
-//    /**
-//     * @param int $userId
-//     * @return View
-//     */
-//    public function getShops(): View
-//    {
-//        $shops = User::find($userId);
-//
-//        /** @var Encoder $encoder */
-//        $encoder = Encoder::instance([
-//            User::class => UserSchema::class
-//        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
-//
-//        $json = $encoder->encodeData($user);
-//        return view('json', compact('json'));
-//    }
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function getGifts(Request $request): View
+    {
+        $gifts = Gift::where('active', '=', 1)->get();
+
+        $encoder = Encoder::instance([
+            Gift::class => GiftSchema::class
+        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
+
+        $json = $encoder->encodeData($gifts);
+        return view('json', compact('json'));
+    }
+
 
     /**
      * @param int $customerId
