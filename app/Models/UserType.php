@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\UserType
+ * App\Models\UserType
  *
  * @property integer $id
  * @property User[] $users

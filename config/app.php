@@ -182,6 +182,8 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Zofe\Rapyd\RapydServiceProvider::class,
 
+        TCG\Voyager\VoyagerServiceProvider::class,
+
 //        Way\Generators\GeneratorsServiceProvider::class,
 //        Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
     ],

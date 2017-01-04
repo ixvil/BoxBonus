@@ -41,6 +41,7 @@ Route::any('/json/register/', 'JsonController@registerUser');
 
 Route::any('/json/getpartners/', 'JsonController@getPartners');
 Route::any('/json/getgifts/', 'JsonController@getGifts');
+Route::any('/json/getnews/', 'JsonController@getNews');
 
 /*
  * Auth routes
@@ -48,3 +49,8 @@ Route::any('/json/getgifts/', 'JsonController@getGifts');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});

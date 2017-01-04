@@ -17,6 +17,7 @@ use App\Models\Customer;
 use App\Schemas\CustomerSchema;
 use App\Schemas\GiftSchema;
 use App\Schemas\PartnerSchema;
+use App\Schemas\PostSchema;
 use App\Schemas\UserSchema;
 
 use Illuminate\Contracts\View\View;
@@ -24,6 +25,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Encoder\EncoderOptions;
+use TCG\Voyager\Models\Post;
 
 
 class JsonController extends Controller
@@ -79,6 +81,21 @@ class JsonController extends Controller
         return view('json', compact('json'));
     }
 
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function getNews(Request $request): View
+    {
+        $news = Post::where('status', '=', Post::PUBLISHED)->get();
+
+        $encoder = Encoder::instance([
+            Post::class => PostSchema::class
+        ], new EncoderOptions(JSON_PRETTY_PRINT, $this->prefixUrl));
+
+        $json = $encoder->encodeData($news);
+        return view('json', compact('json'));
+    }
 
     /**
      * @param int $customerId

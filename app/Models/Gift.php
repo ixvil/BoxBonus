@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Gift
+ * App\Models\Gift
  *
  * @property integer $id
  * @property integer $partner_id

@@ -9,7 +9,8 @@
         "laravel/framework": "5.3.*",
         "barryvdh/laravel-ide-helper": "^2.2",
         "zofe/rapyd": "^2.2",
-        "neomerx/json-api": "^0.8.10"
+        "neomerx/json-api": "^0.8.10",
+        "tcg/voyager": "^0.10.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
