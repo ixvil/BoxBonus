@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Auth\JsonAuthController;
 use App\Models\Gift;
 use App\Models\Partner;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Customer;
 use App\Schemas\CustomerSchema;
@@ -25,7 +26,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Encoder\EncoderOptions;
-use TCG\Voyager\Models\Post;
 
 
 class JsonController extends Controller

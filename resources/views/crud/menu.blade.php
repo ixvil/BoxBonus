@@ -15,6 +15,7 @@
 
             <li @if (Request::is('partners/grid')) class="active"@endif>{!! link_to("partners/grid", "Партнеры") !!}</li>
             <li @if (Request::is('gifts/grid')) class="active"@endif>{!! link_to("gifts/grid", "Подарки") !!}</li>
+            <li @if (Request::is('posts/grid')) class="active"@endif>{!! link_to("posts/grid", "Новости") !!}</li>
 
 
         </ul>

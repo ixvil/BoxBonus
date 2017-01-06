@@ -5,12 +5,13 @@
  * Date: 05.01.2017
  * Time: 0:46
  */
+
 namespace App\Schemas;
 
 use App\Models\Partner;
+use App\Models\Post;
 use Neomerx\JsonApi\Schema\SchemaProvider;
 use TCG\Voyager\Models\Category;
-use TCG\Voyager\Models\Post;
 
 class PostSchema extends SchemaProvider
 {

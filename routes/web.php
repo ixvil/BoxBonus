@@ -30,6 +30,9 @@ Route::any('/users/grid', 'UserController@getGrid');
 Route::any('/customers/edit', 'CustomerController@getEdit');
 Route::any('/customers/grid', 'CustomerController@getGrid');
 
+Route::any('/posts/edit', 'PostController@getEdit');
+Route::any('/posts/grid', 'PostController@getGrid');
+
 /*
  * JSON routes
  */
