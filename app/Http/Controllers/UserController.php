@@ -28,6 +28,9 @@ class UserController extends Controller implements RapydControllerInterface
         $grid->add('name', 'Name');
         $grid->add('{{ $userType->name }}', 'UserType', 'name');
 
+        $grid->add('phone', 'Phone');
+        $grid->add('email', 'E-mail');
+
         $grid->edit('/users/edit', 'Edit', 'show|modify');
         $grid->link('/users/edit', "New User", "TR");
 
@@ -56,6 +59,10 @@ class UserController extends Controller implements RapydControllerInterface
 
         $edit->add('id', 'ID', 'text')->rule('required');
         $edit->add('name', 'Name', 'text')->rule('required');
+
+        $edit->add('phone', 'Phone', 'text')->rule('required');
+        $edit->add('email', 'E-mail', 'text')->rule('required');
+
         $edit->add('userType.name', 'Тип пользователя', 'autocomplete')->search(['name'])->rule('required');
 
         $edit->link('/users/grid', "List", "TR");

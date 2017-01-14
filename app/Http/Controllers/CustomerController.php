@@ -26,6 +26,7 @@ class CustomerController extends Controller implements RapydControllerInterface
         $grid = DataGrid::source(Customer::with("user"));
 
         $grid->add('id', 'ID', true)->style("width:100px");
+        $grid->add('walletId', 'Номер кошелька');
         $grid->add('balance', 'Баланс');
         $grid->add('{{ $user->name }}', 'Пользователь', 'name');
 
@@ -55,6 +56,7 @@ class CustomerController extends Controller implements RapydControllerInterface
         $edit = DataEdit::source(new Customer);
 
         $edit->add('id', 'ID', 'text')->rule('required');
+        $edit->add('walletId', 'Номер кошелька', 'text')->rule('required');
         $edit->add('balance', 'Баланс', 'text')->rule('required');
         $edit->add('user.name', 'Пользователь', 'autocomplete')->search(['name'])->rule('required');
 
