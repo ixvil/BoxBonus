@@ -1,21 +1,16 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ixvil
- * Date: 06.01.2017
- * Time: 4:09
- */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rapyd;
 
+use App\Http\Controllers\Controller;
+use View;
+use Zofe\Rapyd\DataGrid\DataGrid;
+use Zofe\Rapyd\DataEdit\DataEdit;
 
 use App\Interfaces\RapydControllerInterface;
-use App\Models\Post;
-use View;
-use Zofe\Rapyd\DataEdit\DataEdit;
-use Zofe\Rapyd\DataGrid\DataGrid;
+use App\Models\Gift;
 
-class PostController extends Controller implements RapydControllerInterface
+class GiftController extends Controller implements RapydControllerInterface
 {
 
     /**
@@ -23,16 +18,15 @@ class PostController extends Controller implements RapydControllerInterface
      */
     public function getGrid()
     {
-        $grid = DataGrid::source(Post::with('partner'));
+        $grid = DataGrid::source(Gift::with('partner'));
 
         $grid->add('id', 'ID', true)->style("width:100px");
-        $grid->add('title', 'Name');
-        $grid->add('excerpt', 'Description');
-        $grid->add('body', 'Text');
+        $grid->add('name', 'Name');
+        $grid->add('price', 'Цена');
         $grid->add('{{ $partner->name }}', 'Магазин', 'name');
 
-        $grid->edit('/posts/edit', 'Edit', 'show|modify');
-        $grid->link('/posts/edit', "New Gift", "TR");
+        $grid->edit('/gifts/edit', 'Edit', 'show|modify');
+        $grid->link('/gifts/edit', "New Gift", "TR");
 
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);
@@ -54,19 +48,16 @@ class PostController extends Controller implements RapydControllerInterface
      */
     public function getEdit()
     {
-        $edit = DataEdit::source(new Post);
+        $edit = DataEdit::source(new Gift);
 
         $edit->add('id', 'ID', 'text')->rule('required');
-        $edit->add('title', 'Name', 'text')->rule('required');
-        $edit->add('excerpt', 'Описание', 'textarea')->rule('required');
-        $edit->add('body', 'Text', 'textarea');
-
+        $edit->add('name', 'Name', 'text')->rule('required');
+        $edit->add('price', 'Цена', 'text')->rule('required');
         $edit->add('partner.name', 'Магазин', 'autocomplete')->search(['name'])->rule('required');
+        $edit->add('description', 'Описание', 'textarea')->rule('required');
+        $edit->add('logo', 'Логотип', 'image')->rule('required');
 
-
-        $edit->add('image', 'Логотип', 'image')->rule('required');
-
-        $edit->link('/posts/grid', "List", "TR");
+        $edit->link('/gifts/grid', "List", "TR");
 
         return view('crud/edit', compact('edit'));
     }

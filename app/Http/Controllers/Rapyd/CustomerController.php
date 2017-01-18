@@ -6,9 +6,10 @@
  * Time: 1:21
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rapyd;
 
 
+use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use App\Interfaces\RapydControllerInterface;
 use App\Interfaces\View;

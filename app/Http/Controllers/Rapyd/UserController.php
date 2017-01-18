@@ -6,9 +6,10 @@
  * Time: 0:29
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Rapyd;
 
 
+use App\Http\Controllers\Controller;
 use App\Interfaces\RapydControllerInterface;
 use App\Interfaces\View;
 use Zofe\Rapyd\DataEdit\DataEdit;

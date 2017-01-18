@@ -18,20 +18,20 @@ Route::get('/', function () {
 /*
  * Routes for Rapyd Crud
  */
-Route::any('/partners/edit', 'PartnerController@getEdit');
-Route::any('/partners/grid', 'PartnerController@getGrid');
+Route::any('/partners/edit', 'Rapyd\PartnerController@getEdit');
+Route::any('/partners/grid', 'Rapyd\PartnerController@getGrid');
 
-Route::any('/gifts/edit', 'GiftController@getEdit');
-Route::any('/gifts/grid', 'GiftController@getGrid');
+Route::any('/gifts/edit', 'Rapyd\GiftController@getEdit');
+Route::any('/gifts/grid', 'Rapyd\GiftController@getGrid');
 
-Route::any('/users/edit', 'UserController@getEdit');
-Route::any('/users/grid', 'UserController@getGrid');
+Route::any('/users/edit', 'Rapyd\UserController@getEdit');
+Route::any('/users/grid', 'Rapyd\UserController@getGrid');
 
-Route::any('/customers/edit', 'CustomerController@getEdit');
-Route::any('/customers/grid', 'CustomerController@getGrid');
+Route::any('/customers/edit', 'Rapyd\CustomerController@getEdit');
+Route::any('/customers/grid', 'Rapyd\CustomerController@getGrid');
 
-Route::any('/posts/edit', 'PostController@getEdit');
-Route::any('/posts/grid', 'PostController@getGrid');
+Route::any('/posts/edit', 'Rapyd\PostController@getEdit');
+Route::any('/posts/grid', 'Rapyd\PostController@getGrid');
 
 /*
  * JSON routes
@@ -52,8 +52,16 @@ Route::any('/json/getnews/', 'JsonController@getNews');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+
+/*
+ * Customer  routes
+ */
+
+Route::get('/buy', 'BuyController@index');
