@@ -65,3 +65,4 @@ Route::group(['prefix' => 'admin'], function () {
  */
 
 Route::get('/buy', 'BuyController@index');
+Route::post('/buy', 'BuyController@post');

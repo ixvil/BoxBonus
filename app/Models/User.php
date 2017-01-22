@@ -11,13 +11,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property integer $id
  * @property integer $customer_id
  * @property integer $user_type_id
+ * @property string $name
+ * @property string $phone
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $unreadNotifications
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereCustomerId($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereUserTypeId($value)
  * @mixin \Eloquent
- * @property string $name
  * @method static \Illuminate\Database\Query\Builder|\App\Models\User whereName($value)
  */
 class User extends Authenticatable
@@ -56,11 +57,11 @@ class User extends Authenticatable
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function partnerUsers()
     {
-        return $this->hasMany('App\Models\PartnerUser');
+        return $this->hasOne('App\Models\PartnerUser');
     }
 
 

@@ -60,4 +60,9 @@ class Customer extends Model
             }
         }
     }
+
+    public function getName()
+    {
+        return $this->name;
+    }
 }
