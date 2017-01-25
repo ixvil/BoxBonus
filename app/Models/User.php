@@ -24,6 +24,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    const CUSTOMER_USER_TYPE_ID = 1;
 
     /**
      * The attributes that are mass assignable.

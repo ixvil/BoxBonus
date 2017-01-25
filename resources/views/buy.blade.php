@@ -10,12 +10,13 @@
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/buy') }}">
                             {{ csrf_field() }}
-
+                            {{ app('request')->old('wallet') }}
                             <div class="form-group{{ $errors->has('wallet') ? ' has-error' : '' }}">
                                 <label for="wallet" class="col-md-4 control-label">Кошелек</label>
 
                                 <div class="col-md-6">
-                                    <input id="wallet" type="text" class="form-control" name="wallet" value="{{ old('wallet') }}" autofocus>
+                                    <input id="wallet" type="text" class="form-control" name="wallet"
+                                           value="{{ old('wallet') }}" autofocus>
                                     @if ($errors->has('wallet'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('wallet') }}</strong>
@@ -28,7 +29,8 @@
                                 <label for="phone" class="col-md-4 control-label">Телефон</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}" >
+                                    <input id="phone" type="text" class="form-control" name="phone"
+                                           value="{{ old('phone') }}">
 
                                     @if ($errors->has('phone'))
                                         <span class="help-block">
@@ -42,7 +44,8 @@
                                 <label for="sum" class="col-md-4 control-label">Сумма</label>
 
                                 <div class="col-md-6">
-                                    <input id="sum" type="text" class="form-control" name="sum" value="{{ old('sum') }}" required autofocus>
+                                    <input id="sum" type="text" class="form-control" name="sum" value="{{ old('sum') }}"
+                                           required autofocus>
 
                                     @if ($errors->has('sum'))
                                         <span class="help-block">

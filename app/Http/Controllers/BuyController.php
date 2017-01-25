@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\CustomerArrival;
 use App\Models\PartnerUser;
+use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
+use Illuminate\Validation\ValidationException;
 use PhpParser\Error;
 use Validator;
 
@@ -31,27 +33,21 @@ class BuyController extends Controller
     public function post(Request $request)
     {
         $this->validator($request);
+        $errors = new ViewErrorBag();
+        $customer = $this->getCustomer($request, $errors);
+        if ($errors->hasBag('default') > 0) {
+            return view('buy', compact('errors', $request));
+        }
 
-        $customerCollection = Customer::where('walletId', '=', $request->input('wallet'))->get();
         $return = [
             'request' => $request->all()
         ];
 
         /** @var CustomerArrival $customerArrival */
         $customerArrival = new CustomerArrival();
-
-        if (!isset($customerCollection[0])) {
-            $errors = new MessageBag();
-            $errors->add(
-                $request->input('wallet') ? 'wallet' : 'phone',
-                "Покупатель с такими данными не найден"
-            );
-            return view('buy', compact('errors', $request));
-
-        }
-        /** @var Customer $customer */
-        $customer = $customerCollection[0];
         $customerArrival->customers_id = $customer->id;
+
+
         /** @var PartnerUser $partnerUsers */
         $partnerUsers = Auth::user()->partnerUsers()->getResults();
 
@@ -72,6 +68,7 @@ class BuyController extends Controller
             'начислено ' .
             $customerArrival->bonuses .
             ' баллов';
+        /** TODO: alert if all right */
         return view('buy', compact('return'));
     }
 
@@ -85,6 +82,48 @@ class BuyController extends Controller
             'phone' => 'required_without:wallet|max:55|min:7',
             'sum' => 'required|min:1',
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param $errors
+     * @return Customer|null
+     */
+    public function getCustomer(Request $request, ViewErrorBag &$errors): ?Customer
+    {
+        $customerCollection = Customer
+            ::where('walletId', '=', $request->input('wallet'))
+            ->get();
+
+        if (!isset($customerCollection[0])) {
+            /** @var User[] $customerUser */
+            $customerUser = User
+                ::where('phone', '=', $request->input('phone'))
+                ->get();
+            if (isset($customerUser[0])) {
+                /** @var Customer[] $customerCollection */
+                $customerCollection = Customer
+                    ::where('user_id', '=', $customerUser[0]->id)
+                    ->get();
+            }
+        }
+
+        if (!isset($customerCollection[0])) {
+            $messageBag = new MessageBag();
+            $messageBag->add(
+                $request->input('wallet') ? 'wallet' : 'phone',
+                "Покупатель с такими данными не найден"
+            );
+
+            $errors->put('default', $messageBag);
+
+            /** TODO: bad way, we need one return. let's find best practices */
+        } else {
+            /** @var Customer $customer */
+            $customer = $customerCollection[0];
+        }
+
+        return $customer ?? null;
     }
 
 }
