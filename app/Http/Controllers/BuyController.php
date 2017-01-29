@@ -10,19 +10,18 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\ViewErrorBag;
-use Illuminate\Validation\ValidationException;
-use PhpParser\Error;
-use Validator;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class BuyController extends Controller
 {
+
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request)
     {
-
+        $this->checkAuth();
         return view('buy');
     }
 
@@ -32,6 +31,7 @@ class BuyController extends Controller
      */
     public function post(Request $request)
     {
+        $this->checkAuth();
         $this->validator($request);
         $errors = new ViewErrorBag();
         $customer = $this->getCustomer($request, $errors);
@@ -124,6 +124,15 @@ class BuyController extends Controller
         }
 
         return $customer ?? null;
+    }
+
+    public function checkAuth()
+    {
+        /** @var User $user */
+        $user = Auth::user();
+        if (!isset($user) || $user->user_type_id != User::PARTNER_USER_TYPE_ID) {
+            throw new AccessDeniedHttpException('Access Denied');
+        }
     }
 
 }

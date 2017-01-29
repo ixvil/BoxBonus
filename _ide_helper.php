@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.15 on 2017-01-03.
+ * Generated for Laravel 5.3.15 on 2017-01-28.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -11835,6 +11835,70 @@ namespace {
          */
         public static function getNames(){
             return \Illuminate\View\Factory::getNames();
+        }
+        
+    }
+
+
+    class Menu extends \TCG\Voyager\Models\Menu{
+        
+    }
+
+
+    class Voyager extends \TCG\Voyager\Facades\Voyager{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getInstance(){
+            return \TCG\Voyager\Voyager::getInstance();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function setting($key, $default = null){
+            return \TCG\Voyager\Voyager::setting($key, $default);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function image($file, $default = ''){
+            return \TCG\Voyager\Voyager::image($file, $default);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function routes(){
+            return \TCG\Voyager\Voyager::routes();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function can($permission){
+            return \TCG\Voyager\Voyager::can($permission);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function getVersion(){
+            return \TCG\Voyager\Voyager::getVersion();
         }
         
     }
