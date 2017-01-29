@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 /*
 |--------------------------------------------------------------------------
@@ -66,3 +66,6 @@ Route::group(['prefix' => 'admin'], function () {
 
 Route::get('/buy', 'BuyController@index');
 Route::post('/buy', 'BuyController@post');
+
+Route::get('/spent', 'BuyController@spent');
+Route::post('/spent', 'BuyController@spentPost');

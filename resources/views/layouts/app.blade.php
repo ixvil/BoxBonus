@@ -48,6 +48,7 @@
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::getUser() && Auth::getUser()->user_type_id == \App\Models\User::PARTNER_USER_TYPE_ID)
+                    <li><a href="{{ url('/spent') }}">Spent</a></li>
                     <li><a href="{{ url('/buy') }}">Buy</a></li>
                 @endif
             <!-- Authentication Links -->

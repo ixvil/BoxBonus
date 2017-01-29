@@ -1,6 +1,4 @@
 @extends('layouts.app')
-{{--{{ var_dump($errors) }}--}}
-{{--{{ die() }}}--}}
 @section('content')
     <div class="container">
         <div class="row">
@@ -8,7 +6,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Новая покупка</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/buy') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/spent') }}">
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('wallet') ? ' has-error' : '' }}">
                                 <label for="wallet" class="col-md-4 control-label">Кошелек</label>
@@ -39,16 +37,16 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('sum') ? ' has-error' : '' }}">
-                                <label for="sum" class="col-md-4 control-label">Сумма</label>
+                            <div class="form-group{{ $errors->has('gift') ? ' has-error' : '' }}">
+                                <label for="gift" class="col-md-4 control-label">Подарок</label>
 
                                 <div class="col-md-6">
-                                    <input id="sum" type="text" class="form-control" name="sum" value="{{ old('sum') }}"
+                                    <input id="gift" type="text" class="form-control" name="gift" value="{{ old('gift') }}"
                                            required autofocus>
 
-                                    @if ($errors->has('sum'))
+                                    @if ($errors->has('gift'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('sum') }}</strong>
+                                        <strong>{{ $errors->first('gift') }}</strong>
                                     </span>
                                     @endif
                                 </div>
